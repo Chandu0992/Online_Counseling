@@ -106,6 +106,7 @@ def addStudent(request):
 
 def show_feed_back(request):
     reg_id = request.session.get('stu_id')
+    reg_id = request.POST.get('stu_id')
     my_feed_back = Feed_Back.objects.filter(reg_id=reg_id)
     if len(my_feed_back) == 1:
         return render(request, 'myapp/feed_back.html',
@@ -308,20 +309,24 @@ def student_Questions(request):
 
 def Student_Logout(request):
     del request.session['stu_id']
-    if request.session['stu_msg_id']:
+    try:
         del request.session['stu_msg_id']
         del request.session['hod_msg_id']
         del request.session['cou_msg_id']
+    except KeyError:
+        return student_Login(request)
     return student_Login(request)
 
 def Counselor_Logout(request):
     try:
         if request.session['cou_id']:
             del request.session['cou_id']
-            if request.session['cou_msg_id']:
+            try:
                 del request.session['stu_msg_id']
                 del request.session['hod_msg_id']
                 del request.session['cou_msg_id']
+            except KeyError:
+                return show_counselor(request)
             return show_counselor(request,msg = 'Logout Successfully')
     except KeyError:
         return show_counselor(request, msg="Please Login First!")
@@ -330,10 +335,12 @@ def Hod_Logout(request):
     try:
         if request.session['hod_id']:
             del request.session['hod_id']
-            if request.session['hod_msg_id']:
+            try:
                 del request.session['stu_msg_id']
                 del request.session['hod_msg_id']
                 del request.session['cou_msg_id']
+            except KeyError:
+                return show_hod(request)
             return show_hod(request,msg = 'Logout Successfully')
     except KeyError:
         return show_hod(request, msg="Please Login First!")
@@ -487,14 +494,6 @@ def show_my_graph(request):
     else:
         stu_per = list(stu_per)
         my_val = []
-        #val_one,val_two,val_three,val_four,val_five,val_six,val_seven = '','','','','','',''
-        # val_one = int(student.student_avg_academic)
-        # val_two = int(student.student_lab_performance)
-        # val_three = int(student.student_avg_attendance)
-        # val_four = int(student.student_avg_curricular_activities)
-        # val_five = int(student.student_sports)
-        # val_six = int(student.student_project_performance)
-        # val_seven = int(student.student_over_all_performance)
         for student in stu_per:
             my_val.append(int(student.student_avg_academic))
             my_val.append(int(student.student_lab_performance))

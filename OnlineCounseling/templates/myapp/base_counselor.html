@@ -13,6 +13,7 @@
 <ul>
     <li><a href="#" class="active" style="text-decoration: none"><span style="color:#00008B;">Welcome : {{ cou_name }}</span></a></li>
     <li><a href="{% url 'fetch_counselor' %}">Home</a></li>
+    <li><a href="{% url 'show_feed_back' %}" target="_blank">Give Feedback</a></li>
     <li><a href="{% url 'show_performance' %}" target="_blank">Add Student Performance</a></li>
     <li style="float: right"><a href="{% url 'counselor_logout' %}" onclick="closeWin();">Logout</a></li>
 </ul>
