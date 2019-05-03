@@ -1,0 +1,276 @@
+{% extends 'myapp/base_counselor.html' %}
+{% load static %}
+{% block body_block %}
+<head>
+    <meta charset="UTF-8">
+    <title>Counselor Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+<div class="" style="float:left;margin-left: 5%">
+  <div>
+      <form action="{% url 'add_student' %}" name="add_student" method="post">
+          {% csrf_token %}
+          <table>
+              <tr><span class="span_elements">Add Student :</span></tr>
+              <tr>
+                <input type="text" name="student_id" id="student_id" placeholder="Enter Student Id" required>
+              </tr>
+              <tr>
+                <input type="submit" value="Add Student" class="btn btn-success btn-block btn-lg">
+              </tr>
+          </table>
+
+      </form>
+  </div>
+    <br>
+  <div>
+      <form action="{% url 'view_feed_back' %}" name="" method="post">
+          {% csrf_token %}
+          <table width="100%">
+              <tr>
+                  <td>
+                      <select name="student_id" id="student_id">
+                          {% for student in res_student %}
+                              <option value="{{ student.student_id }}">{{ student.student_id }}</option>
+                          {% endfor %}
+                      </select>
+                  </td>
+              </tr>
+          </table>
+          <br>
+          <input type="submit" value="Generate Feed Back" class="btn btn-success btn-block btn-lg"> <br>
+          <button type="submit" formaction="{% url 'view_student' %}" name="button" class="btn btn-success btn-block btn-lg">View Details</button> <br>
+          <button type="submit" formaction="{% url 'show_ask_question' %}" name="button" class="btn btn-success btn-block btn-lg">Ask_Question</button> <br>
+          <button type="submit" formaction="{% url 'show_cou_index' %}" name="button" class="btn btn-success btn-block btn-lg">Chat</button>
+      </form>
+  </div>
+</div>
+
+<div class="" style="float:right;margin-right: 5%" class="table-responsive">
+{% if res and reg_id %}
+<table border="0" class="table table-sm table-dark">
+  <tr>
+    <td colspan="2" align="center">{{ reg_id }}</td>
+  </tr>
+  <tr>
+    <td>1)Are you really intrested to join the course?</td>
+    <td>{{ res.question_1 }}</td>
+  </tr>
+
+  <tr>
+    <td>2)Do you have good communication skills?</td>
+    <td>{{ res.question_2 }}</td>
+  </tr>
+
+  <tr>
+    <td>3)Do you communicate with others easily?</td>
+    <td>{{ res.question_3 }}</td>
+  </tr>
+
+  <tr>
+    <td>4)Do you participate any cultural activities?</td>
+    <td>{{ res.question_4 }}</td>
+  </tr>
+
+  <tr>
+    <td>5)Is there any intresting situations in your life?</td>
+    <td>{{ res.question_5 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>6)Are you really an active student in a class?</td>
+    <td>{{ res.question_6 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>7)Are you got any job opportunity?</td>
+    <td>{{ res.question_7 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>8)Do you got any certificates?</td>
+    <td>{{ res.question_8 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>9)Do you participate any events?</td>
+    <td>{{ res.question_9 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>10)Are you good in communication?</td>
+    <td>{{ res.question_10 }}</td>
+  </tr>
+
+  <tr>
+    <td>11)Do you have any plan to reach your goal?</td>
+    <td>{{ res.question_11 }}</td>
+  </tr>
+
+  <tr>
+    <td>12)Are you a good hardworker?</td>
+    <td>{{ res.question_12 }}</td>
+  </tr>
+
+  <tr>
+    <td>13)Do you like to watch movies/vedios?</td>
+    <td>{{ res.question_13 }}</td>
+  </tr>
+
+  <tr>
+    <td>14)Do you play games daily?</td>
+    <td>{{ res.question_14 }}</td>
+  </tr>
+
+  <tr>
+    <td>15)Do you come prepared for the class?</td>
+    <td>{{ res.question_15 }}</td>
+  </tr>
+
+</table>
+{% endif%}
+</div>
+
+<div class="" style="float:right;margin-right: 5%" class="table-responsive">
+  {% if student %}
+  <table border="1" class="table table-sm table-dark">
+      <tr  align="center">
+        <th colspan="2">
+          {{ student.registration_number }}
+        </th>
+      </tr>
+
+      <tr>
+          <td>Name : </td>
+          <td>{{student.student_name}}</td>
+      </tr>
+
+      <tr>
+        <td>Section : </td>
+        <td>{{student.section}}</td>
+      </tr>
+
+      <tr>
+         <td>Mobile : </td>
+         <td>{{ student.mobile_no }}</td>
+      </tr>
+
+      <tr>
+         <td>Email : </td>
+         <td>{{ student.email_id }}</td>
+      </tr>
+
+      <tr>
+          <td>Admit Under : </td>
+          <td>{{ student.admit_under }}</td>
+      </tr>
+
+      <tr>
+          <td>Caste : </td>
+          <td>{{ student.caste }}</td>
+      </tr>
+
+      <tr>
+          <td>Icet Rank : </td>
+          <td>{{ student.icet_rank }}</td>
+      </tr>
+      <tr>
+            <td>Date of Birth : </td>
+            <td>{{ student.date_of_birth }}</td>
+      </tr>
+
+
+      <tr>
+          <td>10<sup>th</sup> Marks : </td>
+            <td>{{ student.tenth_marks }}</td>
+      </tr>
+
+       <tr>
+          <td>Percentage : </td>
+            <td>{{ student.percentage }}</td>
+      </tr>
+
+       <tr>
+          <td>Name of Parent : </td>
+            <td>{{ student.name_of_parent }}</td>
+      </tr>
+
+       <tr>
+          <td>Resident Address : </td>
+            <td>{{ student.resident_address }}</td>
+      </tr>
+
+       <tr>
+          <td>Occupation : </td>
+            <td>{{ student.occupation }}</td>
+      </tr>
+
+       <tr>
+          <td>Parent Mobile Number : </td>
+            <td>{{ student.parent_mobile_number }}</td>
+      </tr>
+
+       <tr>
+          <td>Local Guardian : </td>
+            <td>{{ student.local_guardian }}</td>
+      </tr>
+
+       <tr>
+          <td>Current Address : </td>
+            <td>{{ student.current_address }}</td>
+      </tr>
+
+       <tr>
+          <td>Guardian Mobile Number : </td>
+            <td>{{ student.guardian_mobile_number }}</td>
+      </tr>
+
+       <tr>
+          <td>Hobbies : </td>
+            <td>{{ student.hobbies }}</td>
+      </tr>
+
+       <tr>
+          <td>Games (NCC/NSS/Sports) : </td>
+            <td>{{ student.games }}</td>
+      </tr>
+
+       <tr>
+          <td>Literacy_Activities : </td>
+            <td>{{ student.literacy_activities }}</td>
+      </tr>
+
+       <tr>
+          <td>Technical Activities : </td>
+            <td>{{ student.technical_activities }}</td>
+      </tr>
+
+  </table>
+  {% endif%}
+</div>
+</body>
+
+<script>
+function preventBack()
+{
+        window.history.forward();
+}
+setTimeout("preventBack()", 0);
+window.onunload=function(){null};
+
+function closeWin() {
+   preventBack();
+   window.top.close();
+}
+
+</script>
+
+{% endblock %}

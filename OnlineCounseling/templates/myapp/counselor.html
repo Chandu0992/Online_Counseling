@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counselor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+<div style="margin-top: 15px">
+    <h1 align="center" style="color:#008B8B;">Counselor Registration/Login</h1>
+<div style="float: left;margin-left: 20%">
+    <form action="{% url 'reg_counselor' %}" name="counselor_form" method="post">
+    {% csrf_token %}
+    <table border="0">
+        <tr>
+            <td><span class="span_elements">Counselor Id :</span></td>
+            <td>
+                <input type="text" name="counselor_id" id="counselor_id" placeholder="Counselor Id" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">Counselor Name :</span></td>
+            <td><input type="text" name="counselor_name" id="counselor_name" placeholder="Counselor Name" required> </td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">Counselor Designation :</span></td>
+            <td><input type="text" name="counselor_designation" id="counselor_designation" placeholder="Counselor Designation" required></td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">Password :</span></td>
+            <td><input type="password" name="counselor_password" id="counselor_password" placeholder="Your Password" required></td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">Confirm Password :</span></td>
+            <td><input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="Confirm Password" required></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Register" class="btn btn-success btn-block btn-lg">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
+<div style="float: right;margin-right: 15%">
+    <form action="{% url 'login_counselor' %}" name="" method="post">
+        {% csrf_token %}
+        <table border="0">
+            <tr>
+                <td><span class="span_elements">Counselor Id : </span></td>
+                <td><input type="text" name="counselor_id" id="counselor_id" placeholder="Counselor Id" required></td>
+            </tr>
+
+            <tr>
+                <td><span class="span_elements">Counselor Password : </span></td>
+                <td><input type="password" required placeholder="Your Password" id="counselor_pwd" name="counselor_pwd"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Login" class="btn btn-success btn-block btn-lg"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+    <div>
+        {% if msg %}
+            {{ msg }}
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

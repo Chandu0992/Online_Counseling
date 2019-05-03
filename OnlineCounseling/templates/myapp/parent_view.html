@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parents View</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{% static 'js/Chart.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        input[type=submit] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+<div>
+    <h4 align="center">Student Overall Performance in Academic year given by Personal Counselor</h4><br>
+    <h4 align="center">Student Average Performance for 100%</h4>
+
+    <form action="{% url 'show_student_list' %}" name="my_form" method="post">
+        {% csrf_token %}
+        <div style="float: left;margin-left: 30%">
+            <table>
+
+                <tr>
+                    <td><span class="span_elements">Branch :</span></td>
+                    <td>
+                         <select name="branch" id="branch" required>
+                              <option value="0">Select</option>
+                              <option value="MCA">MCA</option>
+                              <option value="BTECH">BTECH</option>
+                              <option value="MTECH">MTECH</option>
+                         </select>
+                    </td>
+
+                    <td><span class="span_elements">Year :</span></td>
+                    <td>
+                        <select name="year" id="year" required>
+                              <option value="0">Select</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                        </select>
+                    </td>
+
+                    <td><span class="span_elements">Semester :</span></td>
+                    <td>
+                        <select name="semester" id="semester" required>
+                          <option value="0">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <input type="submit" value="Search Student" class="btn btn-success btn-block btn-lg">
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </form>
+</div>
+{% if reg_nums %}
+    <form action="{% url 'show_my_graph' %}" method="post">
+    {% csrf_token %}
+        <div style="width: 40%;margin-left: 30%">
+            <select name="student_id" id="student_id">
+                {% for student in reg_nums %}
+                    <option value="{{ student.registration_number }}">{{ student.registration_number }}</option>
+                {% endfor %}
+            </select><br>
+        <input type="submit" value="Get Details"class="btn btn-success btn-block btn-lg">
+        </div>
+
+    </form>
+{% endif %}
+
+{% if stu_msg %}
+    <div>
+        <p>{{ stu_msg }}</p>
+    </div>
+{% endif %}
+
+{% if stu_per %}
+    <div class="container">
+	    <canvas id="myChart"></canvas>
+    </div>
+{% endif %}
+</body>
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+//Global Options
+Chart.defaults.global.defaultFontFamily='Lato';
+Chart.defaults.global.defaultFontSize=18;
+Chart.defaults.global.defaultFontColor='#777';
+
+let stu_performence_Chart = new Chart(myChart,{
+	type:'pie', //bar,horizontalBar,pie,line,doughnut,radar,polarArea
+	data:{
+		labels:['Student Average Academic', 'Student Lab Performance',
+            'Student Average Attendance','Student Average Curricular Activities',
+            'Student Sports','Student Project Performance','Student Overall Performance'],
+			//City names (In our case Student Performance Attributes)
+        datasets:[{
+
+		    label:'Student Average Performance for 100%', //Student Performance
+			data: {{ stu_per }},
+
+            //backgroundColor:'green',
+			backgroundColor:[
+				'rgba(255,99,132,0.6)',
+				'rgba(54,162,235,0.6)',
+			    'rgba(255,206,85,0.6)',
+				'rgba(75,192,192,0.6)',
+				'rgba(153,102,255,0.6)',
+				'rgba(255,159,64,0.6)',
+				'rgba(255,99,70,0.6)'
+            ],
+			borderWidth: 1,
+			borderColor:'#777',
+			hoverBorderWidth:4,
+			hoverBorderColor:'#000'
+		    }]
+        },
+	    options:{
+		    display:true,
+            title:{
+			    text:'Student Average Performance for 100%',
+			    fontsize:25,
+		    },
+		    legend:{
+			    display:true,
+                position:'right',
+                labels:{
+			        fontColor:'#000'
+			    }
+		    },
+        layout:{
+			padding:{
+			    left:50,
+				right:0,
+				bottom:0,
+				top:0
+			}
+		},
+        tooltips:{
+			//enabled:false
+			enabled:true
+		}
+	}
+});
+</script>
+</html>

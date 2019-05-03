@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Counseling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+    <div>
+        <h1 align="center" style="color:#008B8B;">Student Details</h1>
+        <form action="{% url 'reg_student' %}" name="my_form" method="post">
+        {% csrf_token %}
+
+             <div style="float: left;margin-left: 10%">
+
+                <table border="0">
+                <tr>
+                    <td><span class="span_elements">Registration no :</span></td>
+                    <td><input type="text" style="text-transform: uppercase" name="reg_no" id="reg_no" placeholder="Registration No" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Student Name :</span></td>
+                    <td><input type="text" style="text-transform: uppercase" name="student_name" id="student_name" placeholder="Student Name" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Branch :</span></td>
+                    <td>
+                        <select name="branch" id="branch" required>
+                          <option value="0">Select</option>
+                          <option value="MCA">MCA</option>
+                          <option value="BTECH">BTECH</option>
+                          <option value="MTECH">MTECH</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Year :</span></td>
+                    <td>
+                        <select name="year" id="year" required>
+                          <option value="0">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Semester :</span></td>
+                    <td>
+                        <select name="semester" id="semester" required>
+                          <option value="0">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Mobile No :</span></td>
+                    <td><input type="text" name="mob_no" id="mob_no" placeholder="Mobile No" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Email Id :</span></td>
+                    <td><input type="email" name="email_id" placeholder="Email Id" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Admitted Under :</span></td>
+                    <td>
+                        <select name="admit_under" id="admit_under">
+                            <option value="0">Select</option>
+                            <option value="Management/convener">Management/convener</option>
+                            <option value="Reimbursement">Reimbursement</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Caste :</span></td>
+                    <td><input type="text" name="caste" placeholder="Caste" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Icet Rank :</span></td>
+                    <td><input type="number" name="icet_rank" placeholder="Icet Rank" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Date of Birth :</span></td>
+                    <td><input type="date" name="dob" placeholder="date of birth" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Blood Group :</span></td>
+                    <td>
+                        <select name="blood_group" id="">
+                            <option value="">Select</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">SSC Type</span></td>
+                    <td>
+                        CGPA  <input type="radio"  name="ssc_type" id="ssc_type" value="cgpa" required>
+                         Marks  <input type="radio"  name="ssc_type" id="ssc_type" value="marks" required>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">10<sup>th</sup> marks/CGPA :</span></td>
+                    <td><input type="text" name="ssc_marks" id="ssc_marks" placeholder="10th marks/CGPA" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Percentage :</span></td>
+                    <td><input type="text" name="ssc_per" id="ssc_per" value="" placeholder="Percentage" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Name of the Parent :</span></td>
+                    <td><input type="text" style="text-transform: uppercase" name="parent_name" placeholder="Name of the Parent" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Resident Address</span></td>
+                    <td><textarea name="home_address" id="" cols="30" rows="5" placeholder="Resident Address"></textarea></td>
+                </tr>
+
+                </table>
+            </div>
+
+            <div style="float: right;margin-right: 10%">
+                <table border="0">
+
+                <tr>
+                    <td><span class="span_elements">Occupation :</span></td>
+                    <td><input type="text" name="occupation" style="text-transform: uppercase" placeholder="Occupation" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Parents Mobile Number :</span></td>
+                    <td><input type="text" name="p_mob_no" id="p_mob_no" placeholder="Parents Mobile Number" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Local Guardian</span></td>
+                    <td><input type="text" style="text-transform: uppercase" name="local_guardian" placeholder="Local Guardian"></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Current Address :</span></td>
+                    <td><textarea name="guard_address" id="" cols="30" rows="5" placeholder="Current Address"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Guardian Mobile Number :</span></td>
+                    <td><input type="text" name="g_mob_no" id="g_mob_no" placeholder="Guardian Mobile Number" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Hobbies :</span></td>
+                    <td><input type="text" name="hobbies" placeholder="Hobbies" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Games and Other Activities(NCC) :</span></td>
+                    <td><input type="text" name="games" placeholder="Games and Other Activities(NCC)" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Literacy Activities</span></td>
+                    <td><input type="text" name="lit_activity" placeholder="Literacy Activities" required></td>
+                </tr>
+
+                <tr>
+                    <td><span class="span_elements">Technical Activities</span></td>
+                    <td><input type="text" name="tech_activity" placeholder="Technical Activities" required></td>
+                </tr>
+
+                <tr>
+                        <td colspan="2" align="center">
+                            <input type="submit" onclick="validateForm();" value="Submit" class="btn btn-success btn-block btn-lg">
+                        </td>
+                </tr>
+
+            </table>
+            </div>
+    </form>
+    </div>
+
+</body>
+<script src="{% static 'js/my_script.js' %}"></script>
+</html>

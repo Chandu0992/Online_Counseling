@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+{% load static %}
+
+{#Template#}
+
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Student Home</title>
+    <link href="{% static 'css/templatemo_style.css' %}" rel="stylesheet" type="text/css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        h2{
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    color: #fff7ed;
+}
+        input[type=file] {
+  width: 68%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+        input[type=submit] {
+  width: 68%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+	<div id="templatemo_container">
+
+    	<div id="templatemo_header_section">
+        	<div id="templatemo_menu">
+                <div id="mid">
+					<ul>
+                        <li><a href="{% url 'student_home' %}" class="current">Home</a></li>
+                    	<li><a href="{% url 'show_student_Questions' %}" target="_blank">Question</a></li>
+                    	<li ><a href="{% url 'view_feed_back' %}">View Feedback</a></li>
+                        <li><a href="{% url 'show_std_index' %}">Chat</a></li>
+                        <li><a href="{% url 'show_feed_back' %}" target="_blank">Give Feedback</a></li>
+                        <li><a href="{% url 'student_logout' %}" onclick="closeWin();">Logout</a></li>
+                	</ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="templatemo_content_section">
+
+        <div id="templatemo_left_section">
+            <div class="templatemo_content">
+
+                <div id="hide">
+                    {% if res %}
+                    <img src="{% static 'media/images/' %}{{ res.profile_pic  }}" alt="Image Not Found" width="300px" height="300px">
+
+                    <form action="{% url 'upload' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="my_pic" id="my_pic"><br>
+                        <input type="submit" value="Upload Picture">
+                    </form>
+                    {% endif %}
+                </div>
+
+                <div>
+                    {{ student_question_res }}
+                </div>
+
+                <div>
+                    <div class="table-responsive">
+
+                        {% if fed_msg %}
+                            <h3>{{ fed_msg }}</h3>
+                        {% endif %}
+                        {% if fed_res %}
+                        <table border="0" class="table table-sm table-dark">
+
+                            <tr>
+                                <td colspan="2" align="center">{{ fed_res.reg_id }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>1)Are you really intrested to join the course?</td>
+                                <td>{{ fed_res.question_1 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>2)Do you have good communication skills?</td>
+                                <td>{{ fed_res.question_2 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>3)Do you communicate with others easily?</td>
+                                <td>{{ fed_res.question_3 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>4)Do you participate any cultural activities?</td>
+                                <td>{{ fed_res.question_4 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>5)Is there any intresting situations in your life?</td>
+                                <td>{{ fed_res.question_5 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>6)Are you really an active student in a class?</td>
+                                <td>{{ fed_res.question_6 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>7)Are you got any job opportunity?</td>
+                                <td>{{ fed_res.question_7 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>8)Do you got any certificates?</td>
+                                <td>{{ fed_res.question_8 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>9)Do you participate any events?</td>
+                                <td>{{ fed_res.question_9 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>10)Are you good in communication?</td>
+                                <td>{{ fed_res.question_10 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>11)Do you have any plan to reach your goal?</td>
+                                <td>{{ fed_res.question_11 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>12)Are you a good hardworker?</td>
+                                <td>{{ fed_res.question_12 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>13)Do you like to watch movies/vedios?</td>
+                                <td>{{ fed_res.question_13 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>14)Do you play games daily?</td>
+                                <td>{{ fed_res.question_14 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>15)Do you come prepared for the class?</td>
+                                <td>{{ fed_res.question_15 }}</td>
+                            </tr>
+
+                        </table>
+                        {% endif%}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+            <div id="templatemo_right_section">
+        		<div class="templatemo_content">
+
+
+                    {% if res %}
+                        <h1><span class="red">Profile </span> <span class="black">Info</span></h1>
+
+                        <h2>Reg Id : {{ res.registration_number }}</h2>
+                        <h2>Name : {{ res.student_name }}</h2>
+                        <h2>Section : {{ res.section }}</h2>
+                        <h2>Mobile No : {{ res.mobile_no }}</h2>
+                        <h2>Email : {{ res.email_id }}</h2>
+                        <h2>Admission Under : {{ res.admit_under }}</h2>
+                        <h2>Caste : {{ res.caste }}</h2>
+                        <h2>Icet Rank : {{ res.icet_rank }}</h2>
+                        <h2>Date of Birth : {{ res.date_of_birth }}</h2>
+                        <h2>Blood Group : {{ res.blood_group }}</h2>
+                        <h2>Tenth Marks : {{ res.tenth_marks }}</h2>
+                        <h2>Percentage : {{ res.percentage }}</h2>
+                        <h2>Name of Parent : {{ res.name_of_parent }}</h2>
+                        <h2>Resident Address : {{ res.resident_address }}</h2>
+                        <h2>Occupation : {{ res.occupation }}</h2>
+                        <h2>Parent Mobile Number : {{ res.parent_mobile_number }}</h2>
+                        <h2>Local Guardian : {{ res.local_guardian }}</h2>
+                        <h2>Current Address : {{ res.current_address }}</h2>
+                        <h2>Guardian Mobile Number  : {{ res.guardian_mobile_number }}</h2>
+                        <h2>Hobbies : {{ res.hobbies }}</h2>
+                        <h2>Games : {{ res.games }}</h2>
+                        <h2>Literacy Activities : {{ res.literacy_activities }}</h2>
+                        <h2>Technical Activities : {{ res.technical_activities }}</h2>
+                    {% endif %}
+
+				</div><!--  End Of Content -->
+
+
+        	</div>
+        </div>
+    </div>
+</body>
+<script>
+function preventBack()
+{
+        window.history.forward();
+}
+setTimeout("preventBack()", 0);
+window.onunload=function(){null};
+
+function closeWin() {
+   preventBack();
+   window.top.close();
+}
+
+/*function hide_div() {
+  document.getElementById("hide").style.display = none;
+}*/
+
+
+</script>
+
+
+<!--script>
+
+
+   /* function hide_div() {
+        alert("1")
+        if(document.getElementById('hide').style.display=='block') {
+            alert("2")
+            document.getElementById('hide').style.display='none';
+        }
+        return false;
+    }*/
+</script-->
+
+</html>

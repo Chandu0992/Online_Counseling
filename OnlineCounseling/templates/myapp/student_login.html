@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Otp Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/btn_txt.css' %}">
+</head>
+<body>
+
+<div align="center" style="margin-top: 200px">
+    <form action="{% url 'otp_verification' %}" name="my_login" method="post">
+        {% csrf_token %}
+        <table border="0" style="width:30%">
+            <tr>
+                <td>Login Register Id : </td>
+                <td><input type="text" name="reg_id" id="reg_id" required placeholder="Please Enter Your Register Id"></td>
+            </tr>
+            <tr>
+                <td colspan="2"> <input type="submit" value="Send Otp"> </td>
+            </tr>
+        </table>
+        <p align="center">Otp Will send to the registered mail id !</p>
+    </form>
+</div>
+<div>
+    {% if login_msg %}
+    <p align="center">{{ login_msg }}</p>
+    {% endif %}
+</div>
+</body>
+</html>

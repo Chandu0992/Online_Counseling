@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <title>Online Counseling</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+</head>
+
+<body>
+
+<ul>
+    <li><a href="#" class="active" style="text-decoration: none"><span style="color:#00008B;">Welcome : {{ hod_name }}</span></a></li>
+    <li><a href="{% url 'hod_home' %}">Home</a></li>
+    <li><a href="{% url 'show_stu_que_hod' %}">Show Student Questions</a></li>
+    <li><a href="{% url 'show_performance' %}" target="_blank">Add Student Performance</a></li>
+    <li><a href="#" target="_blank">Chat</a></li>
+    <li><a href="{% url 'show_feedback_all' %}" target="_blank">Review</a></li>
+    <li style="float: right"><a href="{% url 'hod_logout' %}" onclick="closeWin();">Logout</a></li>
+</ul>
+
+{% block body_block %}
+
+{% endblock %}
+
+</body>
+<script>
+function preventBack()
+{
+        window.history.forward();
+}
+setTimeout("preventBack()", 0);
+window.onunload=function(){null};
+
+function closeWin() {
+   preventBack();
+   window.top.close();
+}
+
+</script>
+</html>

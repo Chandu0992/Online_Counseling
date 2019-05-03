@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HOD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+<div style="margin-top: 15px">
+    <h1 align="center" style="color:#008B8B;">HOD Registration/Login</h1>
+<div style="float: left;margin-left: 20%">
+    <form action="{% url 'reg_hod' %}" name="hod_form" method="post">
+    {% csrf_token %}
+    <table border="0">
+        <tr>
+            <td><span class="span_elements">HOD Id :</span></td>
+            <td>
+                <input type="text" name="hod_id" id="hod_id" placeholder="Hod Id" required>
+            </td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">HOD Name :</span></td>
+            <td><input type="text" name="hod_name" id="counselor_name" placeholder="Hod Name" required> </td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">HOD Designation :</span></td>
+            <td><input type="text" name="hod_designation" id="hod_designation" placeholder="Hod Designation" required></td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">Password :</span></td>
+            <td><input type="password" name="hod_password" id="hod_password" placeholder="Your Password" required></td>
+        </tr>
+
+        <tr>
+            <td><span class="span_elements">Confirm Password :</span></td>
+            <td><input type="password" name="confirm_pwd" id="confirm_pwd" placeholder="Confirm Password" required></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Register" class="btn btn-success btn-block btn-lg">
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+
+<div style="float: right;margin-right: 15%">
+    <form action="{% url 'login_hod' %}" name="" method="post">
+        {% csrf_token %}
+        <table border="0">
+            <tr>
+                <td><span class="span_elements">HOD Id : </span></td>
+                <td><input type="text" name="hod_id" id="hod_id" placeholder="Hod Id" required></td>
+            </tr>
+
+            <tr>
+                <td><span class="span_elements">HOD Password : </span></td>
+                <td><input type="password" required placeholder="Your Password" id="hod_pwd" name="hod_pwd"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Login" class="btn btn-success btn-block btn-lg"></td>
+            </tr>
+
+            {% if msg %}
+                <tr>
+                    <td colspan="2">{{ msg }}</td>
+                </tr>
+            {% endif %}
+        </table>
+    </form>
+</div>
+</div>
+</body>
+</html>

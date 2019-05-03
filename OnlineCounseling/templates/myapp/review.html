@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% for student in review_all %}
+    <center>
+    <div class="table-responsive" style="width: 50%">
+
+        <table border="0" class="table table-sm table-dark">
+
+            <tr>
+                 <td colspan="2" align="center">{{ student.reg_id }}</td>
+            </tr>
+
+            <tr>
+                 <td>1)Are you really intrested to join the course?</td>
+                 <td>{{ student.question_1 }}</td>
+            </tr>
+
+            <tr>
+                <td>2)Do you have good communication skills?</td>
+                <td>{{ student.question_2 }}</td>
+            </tr>
+
+            <tr>
+                <td>3)Do you communicate with others easily?</td>
+                <td>{{ student.question_3 }}</td>
+            </tr>
+
+            <tr>
+                <td>4)Do you participate any cultural activities?</td>
+                <td>{{ student.question_4 }}</td>
+            </tr>
+
+            <tr>
+                <td>5)Is there any intresting situations in your life?</td>
+                <td>{{ student.question_5 }}</td>
+            </tr>
+
+            <tr>
+                <td>6)Are you really an active student in a class?</td>
+                <td>{{ student.question_6 }}</td>
+            </tr>
+
+            <tr>
+                <td>7)Are you got any job opportunity?</td>
+                <td>{{ student.question_7 }}</td>
+            </tr>
+
+            <tr>
+                <td>8)Do you got any certificates?</td>
+                <td>{{ student.question_8 }}</td>
+            </tr>
+
+            <tr>
+                <td>9)Do you participate any events?</td>
+                <td>{{ student.question_9 }}</td>
+            </tr>
+
+            <tr>
+                <td>10)Are you good in communication?</td>
+                                <td>{{ student.question_10 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>11)Do you have any plan to reach your goal?</td>
+                                <td>{{ student.question_11 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>12)Are you a good hardworker?</td>
+                                <td>{{ student.question_12 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>13)Do you like to watch movies/vedios?</td>
+                                <td>{{ student.question_13 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>14)Do you play games daily?</td>
+                                <td>{{ student.question_14 }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>15)Do you come prepared for the class?</td>
+                                <td>{{ student.question_15 }}</td>
+                            </tr>
+    </table>
+
+    </div>
+    </center>
+    <br>
+{% endfor %}
+</body>
+</html>

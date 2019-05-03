@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Feed Back</title>
+</head>
+<body>
+<div class="table-responsive">
+{% if fed_res %}
+<table border="0" class="table table-sm table-dark" style="width: 50%;margin-top: 50px;margin-left: 25%">
+  <tr>
+    <td colspan="2" align="center">{{ fed_res.reg_id }}</td>
+  </tr>
+  <tr>
+    <td>1) Feed back Question one ?</td>
+    <td>{{ fed_res.question_1 }}</td>
+  </tr>
+
+  <tr>
+    <td>2) Feed back Question Two ?</td>
+    <td>{{ fed_res.question_2 }}</td>
+  </tr>
+
+  <tr>
+    <td>3) Feed back Question Three ?</td>
+    <td>{{ fed_res.question_3 }}</td>
+  </tr>
+
+  <tr>
+    <td>4) Feed back Question Four ?</td>
+    <td>{{ fed_res.question_4 }}</td>
+  </tr>
+
+  <tr>
+    <td>5) Feed back Question Five ?</td>
+    <td>{{ fed_res.question_5 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>6) Feed back Question Six ?</td>
+    <td>{{ fed_res.question_6 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>7) Feed back Question Seven ?</td>
+    <td>{{ fed_res.question_7 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>8) Feed back Question Eight ?</td>
+    <td>{{ fed_res.question_8 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>9) Feed back Question Nine ?</td>
+    <td>{{ fed_res.question_9 }}</td>
+
+  </tr>
+
+  <tr>
+    <td>10) Feed back Question Ten ?</td>
+    <td>{{ fed_res.question_10 }}</td>
+  </tr>
+
+</table>
+{% endif%}
+</div>
+</body>
+</html>
