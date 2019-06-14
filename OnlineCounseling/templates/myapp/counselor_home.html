@@ -45,10 +45,11 @@
           <button type="submit" formaction="{% url 'view_student' %}" name="button" class="btn btn-success btn-block btn-lg">View Details</button> <br>
           <button type="submit" formaction="{% url 'show_ask_question' %}" name="button" class="btn btn-success btn-block btn-lg">Ask_Question</button> <br>
           <button type="submit" formaction="{% url 'show_cou_index' %}" name="button" class="btn btn-success btn-block btn-lg">Chat</button>
+          <button type="submit" formaction="{% url 'show_discipline' %}" formtarget="_blank" name="button" class="btn btn-success btn-block btn-lg">Overall Activity</button>
+          <button type="submit" formaction="{% url 'view_discipline' %}" formtarget="_blank" name="button" class="btn btn-success btn-block btn-lg">Show Overall Activity</button>
       </form>
   </div>
 </div>
-
 <div class="" style="float:right;margin-right: 5%" class="table-responsive">
 {% if res and reg_id %}
 <table border="0" class="table table-sm table-dark">

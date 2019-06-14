@@ -71,6 +71,19 @@ urlpatterns = [
     path('show_parent/',views.show_parent,name='show_parent'),
     path('show_student_list/',views.show_student_list,name='show_student_list'),
     path('show_my_graph/',views.show_my_graph,name='show_my_graph'),
+    #Student Marks Views
+    path('show_academic/', views.show_academic_year, name='show_academic'),
+    path('add_academic_year/',views.add_academic_year,name='add_academic_year'),
+    path('Show_academic_year/',views.Show_academic_year,name='Show_academic_year'),
+    path('fetch_Student_academic_detail',views.fetch_Student_academic_detail,name='fetch_Student_academic_detail'),
+    path('show_counseling_record/',views.show_counseling_record,name='show_counseling_record'),
+    path('counseling_record/',views.counseling_record,name='counseling_record'),
+    path('fetch_counselor_record/',views.fetch_counselor_record,name='fetch_counselor_record'),
+    path('show_fetch_counselor_record/',views.show_fetch_counselor_record,name='show_fetch_counselor_record'),
+    path('show_discipline/',views.show_discipline,name='show_discipline'),
+    path('get_discipline/',views.get_discipline,name='get_discipline'),
+    path('viw_discipline/',views.view_discipline,name='view_discipline'),
+    path('fetch_discipline/',views.fetch_discipline,name='fetch_discipline'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,documnet_root=settings.MEDIA_ROOT)

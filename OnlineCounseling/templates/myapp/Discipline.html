@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Counseling</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+<div align="center">
+    <img src="{% static 'images/gvp-logo.png' %}" alt="Oops Image not found...">
+</div>
+<div>
+    <form action="{% url 'get_discipline' %}" method="post">
+        {% csrf_token %}
+        <tr>
+            <td>Student Reg Id :</td>
+            <td><input type="text" name="stu_id" placeholder="Student Reg Id" required></td>
+        </tr>
+    <table border="1">
+        <tr>
+            <td></td>
+            <td>I</td>
+            <td>II</td>
+            <td>III</td>
+            <td>IV</td>
+            <td>V</td>
+            <td>VI</td>
+        </tr>
+
+        <tr>
+            <td>General Discipline</td>
+            <td><input type="text" placeholder="Marks" name="gd1" required></td>
+            <td><input type="text" placeholder="Marks" name="gd2" required></td>
+            <td><input type="text" placeholder="Marks" name="gd3" required></td>
+            <td><input type="text" placeholder="Marks" name="gd4" required></td>
+            <td><input type="text" placeholder="Marks" name="gd5" required></td>
+            <td><input type="text" placeholder="Marks" name="gd6" required></td>
+        </tr>
+
+        <tr>
+            <td>Communication Skills</td>
+            <td><input type="text" placeholder="Marks" name="cs1" required></td>
+            <td><input type="text" placeholder="Marks" name="cs2" required></td>
+            <td><input type="text" placeholder="Marks" name="cs3" required></td>
+            <td><input type="text" placeholder="Marks" name="cs4" required></td>
+            <td><input type="text" placeholder="Marks" name="cs5" required></td>
+            <td><input type="text" placeholder="Marks" name="cs6" required></td>
+        </tr>
+
+        <tr>
+            <td>General Grooming</td>
+            <td><input type="text" placeholder="Marks" name="gg1" required></td>
+            <td><input type="text" placeholder="Marks" name="gg2" required></td>
+            <td><input type="text" placeholder="Marks" name="gg3" required></td>
+            <td><input type="text" placeholder="Marks" name="gg4" required></td>
+            <td><input type="text" placeholder="Marks" name="gg5" required></td>
+            <td><input type="text" placeholder="Marks" name="gg6" required></td>
+        </tr>
+
+        <tr>
+            <td>Behavior with peers</td>
+            <td><input type="text" placeholder="Marks" name="bwp1" required></td>
+            <td><input type="text" placeholder="Marks" name="bwp2" required></td>
+            <td><input type="text" placeholder="Marks" name="bwp3" required></td>
+            <td><input type="text" placeholder="Marks" name="bwp4" required></td>
+            <td><input type="text" placeholder="Marks" name="bwp5" required></td>
+            <td><input type="text" placeholder="Marks" name="bwp6" required></td>
+        </tr>
+
+        <tr>
+            <td>Behavior with faculty</td>
+            <td><input type="text" placeholder="Marks" name="bwf1" required></td>
+            <td><input type="text" placeholder="Marks" name="bwf2" required></td>
+            <td><input type="text" placeholder="Marks" name="bwf3" required></td>
+            <td><input type="text" placeholder="Marks" name="bwf4" required></td>
+            <td><input type="text" placeholder="Marks" name="bwf5" required></td>
+            <td><input type="text" placeholder="Marks" name="bwf6" required></td>
+        </tr>
+
+        <tr>
+            <td>Co-Curricular activities</td>
+            <td><input type="text" placeholder="Marks" name="cca1" required></td>
+            <td><input type="text" placeholder="Marks" name="cca2" required></td>
+            <td><input type="text" placeholder="Marks" name="cca3" required></td>
+            <td><input type="text" placeholder="Marks" name="cca4" required></td>
+            <td><input type="text" placeholder="Marks" name="cca5" required></td>
+            <td><input type="text" placeholder="Marks" name="cca6" required></td>
+        </tr>
+
+        <tr>
+            <td>Extracurricular activities</td>
+            <td><input type="text" placeholder="Marks" name="ea1" required></td>
+            <td><input type="text" placeholder="Marks" name="ea2" required></td>
+            <td><input type="text" placeholder="Marks" name="ea3" required></td>
+            <td><input type="text" placeholder="Marks" name="ea4" required></td>
+            <td><input type="text" placeholder="Marks" name="ea5" required></td>
+            <td><input type="text" placeholder="Marks" name="ea6" required></td>
+        </tr>
+
+        <tr>
+            <td>Behavior in the hostel</td>
+            <td><input type="text" placeholder="Marks" name="bh1" required></td>
+            <td><input type="text" placeholder="Marks" name="bh2" required></td>
+            <td><input type="text" placeholder="Marks" name="bh3" required></td>
+            <td><input type="text" placeholder="Marks" name="bh4" required></td>
+            <td><input type="text" placeholder="Marks" name="bh5" required></td>
+            <td><input type="text" placeholder="Marks" name="bh6" required></td>
+        </tr>
+
+        <tr>
+            <td>Over all grading</td>
+            <td><input type="text" placeholder="Marks" name="og1" required></td>
+            <td><input type="text" placeholder="Marks" name="og2" required></td>
+            <td><input type="text" placeholder="Marks" name="og3" required></td>
+            <td><input type="text" placeholder="Marks" name="og4" required></td>
+            <td><input type="text" placeholder="Marks" name="og5" required></td>
+            <td><input type="text" placeholder="Marks" name="og6" required></td>
+        </tr>
+
+        <tr>
+            <td>Disciplinary actions</td>
+            <td><input type="text" placeholder="Marks" name="da1" required></td>
+            <td><input type="text" placeholder="Marks" name="da2" required></td>
+            <td><input type="text" placeholder="Marks" name="da3" required></td>
+            <td><input type="text" placeholder="Marks" name="da4" required></td>
+            <td><input type="text" placeholder="Marks" name="da5" required></td>
+            <td><input type="text" placeholder="Marks" name="da6" required></td>
+        </tr>
+
+        <tr>
+            <td>Initial of student</td>
+            <td><input type="text" placeholder="Marks" name="is1" required></td>
+            <td><input type="text" placeholder="Marks" name="is2" required></td>
+            <td><input type="text" placeholder="Marks" name="is3" required></td>
+            <td><input type="text" placeholder="Marks" name="is4" required></td>
+            <td><input type="text" placeholder="Marks" name="is5" required></td>
+            <td><input type="text" placeholder="Marks" name="is6" required></td>
+        </tr>
+
+        <tr>
+            <td>Initial of Mentor</td>
+            <td><input type="text" placeholder="Marks" name="im1" required></td>
+            <td><input type="text" placeholder="Marks" name="im2" required></td>
+            <td><input type="text" placeholder="Marks" name="im3" required></td>
+            <td><input type="text" placeholder="Marks" name="im4" required></td>
+            <td><input type="text" placeholder="Marks" name="im5" required></td>
+            <td><input type="text" placeholder="Marks" name="im6" required></td>
+        </tr>
+
+        <tr>
+            <td>Remarks</td>
+            <td><input type="text" placeholder="Marks" name="rm1" required></td>
+            <td><input type="text" placeholder="Marks" name="rm2" required></td>
+            <td><input type="text" placeholder="Marks" name="rm3" required></td>
+            <td><input type="text" placeholder="Marks" name="rm4" required></td>
+            <td><input type="text" placeholder="Marks" name="rm5" required></td>
+            <td><input type="text" placeholder="Marks" name="rm6" required></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="text" placeholder="Marks" name="empty1" required></td>
+            <td><input type="text" placeholder="Marks" name="empty2" required></td>
+            <td><input type="text" placeholder="Marks" name="empty3" required></td>
+            <td><input type="text" placeholder="Marks" name="empty4" required></td>
+            <td><input type="text" placeholder="Marks" name="empty5" required></td>
+            <td><input type="text" placeholder="Marks" name="empty6" required></td>
+        </tr>
+    </table>
+    <div align="center">
+        <h3>Higher Education/Placement</h3>
+    <table border="1">
+        <tr>
+            <td>Placement Details</td>
+            <td>Gate</td>
+            <td>CAT/MAT/GMAT/GRE/TOEFEl/IELTS</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="place1" placeholder="Placement Details" required></td>
+            <td><input type="text" name="gate1" placeholder="Gate Dateils" required></td>
+            <td><input type="text" name="other1" placeholder="Enter Details" required></td>
+        </tr>
+
+        <!--tr>
+            <td colspan="3" align="right">Signature of HOD</td>
+        </tr-->
+        <td colspan="3" align="center">
+            <input type="submit" value="Submit" class="btn btn-success btn-block btn-lg">
+        </td>
+    </table>
+</div>
+    </form>
+</div>
+</body>
+</html>

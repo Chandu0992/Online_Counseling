@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Counseling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body  background="{% static 'images/bg.jpg' %}">
+<div class="" style="float:right;margin-right: 35%;margin-top: 50px" class="table-responsive">
+<form action="{% url 'fetch_counselor_record' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="stu_id" placeholder="Student Registration No">
+    <input type="submit" value="Get Student" class="btn btn-success btn-block btn-lg">
+</form>
+
+<h1 align="center">Counseling Record</h1>
+
+<table border="1" align="center" class="table table-sm table-dark">
+    <tr>
+        <td>Redg number</td>
+        <td>{{ my_record.reg_no }}</td>
+        <td>Student Name</td>
+        <td>{{ my_record.stu_name }}</td>
+    </tr>
+
+    <tr>
+        <td>Name of Mentor</td>
+        <td colspan="3">{{ my_record.mentor_name }}</td>
+    </tr>
+
+    <tr>
+        <td colspan="4" align="center"> Mentor must write his/her remarks and take Student Signature</td>
+
+    </tr>
+
+    <tr>
+        <td rowspan="5">1<sup>st</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s1_r1 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s1_m1 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s1_r2 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s1_m2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">2<sup>nd</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s2_r1 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s2_m1 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s2_r2 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s2_m2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">3<sup>rd</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s3_r1 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s3_m1 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s3_r2 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s3_m2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">4<sup>th</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s4_r1 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s4_m1 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s4_r2 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s4_m2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">5<sup>th</sup> Sem</td>
+    </tr>
+
+   <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s5_r1 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s5_m1 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s5_r2 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s5_m2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">6<sup>th</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s6_r1 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s6_m1 }}
+        </td>
+    </tr>
+
+   <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2">{{ my_record.s6_r2 }}</td>
+    </tr>
+    <tr>
+        <td>
+            {{ my_record.s6_m2 }}
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4">Remarks : {{ my_record.over_all_remarks }}</td>
+    </tr>
+
+</table>
+</div>
+</body>
+</html>

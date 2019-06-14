@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Counseling</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body  background="{% static 'images/bg.jpg' %}">
+<div class="" style="float:right;margin-right: 15%;margin-top: 50px" class="table-responsive">
+<form action="{% url 'counseling_record' %}" method="post">
+    {% csrf_token %}
+<h1 align="center">Counseling Record</h1>
+<table border="1" align="center" class="table table-sm table-dark">
+    <tr>
+        <td>Redg number</td>
+        <td><input type="text" name="stu_reg" placeholder="Registration Number" required></td>
+        <td>Student Name</td>
+        <td><input type="text" name="stu_name" required placeholder="Student Name"></td>
+    </tr>
+
+    <tr>
+        <td>Name of Mentor</td>
+        <td colspan="3"><input type="text" required placeholder="Mentor Name" name="stu_mentor"></td>
+    </tr>
+
+    <tr>
+        <td colspan="4" align="center"> Mentor must write his/her remarks and take Student Signature</td>
+
+    </tr>
+
+    <tr>
+        <td rowspan="5">1<sup>st</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s1_r1" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s1_m1" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s1_r2" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s1_m2" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">2<sup>nd</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s2_r1" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s2_m1" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s2_r2" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s2_m2" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">3<sup>rd</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s3_r1" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s3_m1" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s3_r2" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s3_m2" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">4<sup>th</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s4_r1" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s4_m1" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s4_r2" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s4_m2" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">5<sup>th</sup> Sem</td>
+    </tr>
+
+   <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s5_r1" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s5_m1" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s5_r2" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s5_m2" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td rowspan="5">6<sup>th</sup> Sem</td>
+    </tr>
+
+    <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s6_r1" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s6_m1" required>
+        </td>
+    </tr>
+
+   <tr>
+        <td>Date</td>
+        <td rowspan="2" colspan="2"><input type="text" name="s6_r2" required placeholder="Enter Remarks"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="date" name="s6_m2" required>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4">Remarks : <input type="text" name="over_rem" placeholder="Enter Remarks" required></td>
+    </tr>
+
+    <tr>
+        <td colspan="4" align="center"><input type="submit" value="Submit" class=""></td>
+    </tr>
+
+</table>
+</form>
+</div>
+</body>
+</html>

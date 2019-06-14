@@ -46,6 +46,8 @@
           <button type="submit" formaction="{% url 'show_ask_question_hod' %}" target="_blank" name="button" class="btn btn-success btn-block btn-lg">Ask_Question</button> <br>
           <button type="submit" formaction="{% url 'show_hod_index' %}" name="button" class="btn btn-success btn-block btn-lg">Chat</button> <br>
           <button type="submit" formaction="{% url 'hod_logout' %}" name="button" class="btn btn-success btn-block btn-lg" onclick="closeWin();">Logout</button>
+          <button type="submit" formaction="{% url 'show_discipline' %}" formtarget="_blank" name="button" class="btn btn-success btn-block btn-lg">Overall Activity</button>
+          <button type="submit" formaction="{% url 'view_discipline' %}" formtarget="_blank" name="button" class="btn btn-success btn-block btn-lg">Show Overall Activity</button>
       </form>
   </div>
 </div>

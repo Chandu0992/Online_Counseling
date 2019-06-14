@@ -1,7 +1,7 @@
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render
-from .models import Student_Registration,Counselor,Student_Question,Parent_View
-from .models import HOD,Add_Student,Feed_Back,pro_Question,Parent_View
+from .models import Student_Registration,Counselor,Student_Question,Counselor_Record
+from .models import HOD,Add_Student,Feed_Back,pro_Question,Parent_View,Add_Academic,Discipline
 from django.contrib.auth.hashers import make_password, check_password
 from django.conf import settings
 import random
@@ -105,7 +105,7 @@ def addStudent(request):
     return fetch_counselor(request,None,None)
 
 def show_feed_back(request):
-    reg_id = request.session.get('stu_id')
+    #reg_id = request.session.get('stu_id')
     reg_id = request.POST.get('stu_id')
     my_feed_back = Feed_Back.objects.filter(reg_id=reg_id)
     if len(my_feed_back) == 1:
@@ -504,3 +504,243 @@ def show_my_graph(request):
             my_val.append(int(student.student_over_all_performance))
 
         return render(request, 'myapp/parent_view.html',{'stu_per':my_val})
+
+def show_academic_year(request):
+    cou_id = request.session.get('cou_id')
+    my_stu_lst = Add_Student.objects.filter(counselor_id=cou_id)
+    my_stu_lst = list(my_stu_lst)
+    return render(request,"myapp/academic_year_input.html",{'my_stu_lst':my_stu_lst})
+
+def add_academic_year(request):
+    stu_id = request.POST.get('reg_no')
+    sem = request.POST.get('sem')
+    subject = request.POST.get('course_name')
+    mid1 = request.POST.get('mid1')
+    mid2 = request.POST.get('mid2')
+    _int = request.POST.get('internal')
+    _ext = request.POST.get('external')
+    my_marks = Add_Academic(student_id=stu_id,sem=sem,subject=subject,mid1=mid1,mid2=mid2,internal=_int,external=_ext)
+    my_marks.save()
+    return show_academic_year(request)
+
+def Show_academic_year(request):
+    cou_id = request.session.get('cou_id')
+    my_stu_lst = Add_Student.objects.filter(counselor_id=cou_id)
+    my_stu_lst = list(my_stu_lst)
+    return render(request,"myapp/academic_year.html",{'my_stu_lst':my_stu_lst})
+
+def fetch_Student_academic_detail(request):
+    stu_id = request.POST.get('reg_id')
+    sem = request.POST.get('sem')
+    print(stu_id)
+    print(sem)
+    my_stu_details = Add_Academic.objects.filter(student_id=stu_id,sem=sem)
+    my_stu_details = list(my_stu_details)
+    for rec in my_stu_details:
+        print(rec.subject)
+        print(rec.mid1)
+        print(rec.mid2)
+        print(rec.internal)
+        print(rec.external)
+    return render(request,'myapp/academic_year.html',{'my_stu_details':my_stu_details,'sem':sem})
+
+def show_counseling_record(request):
+    return render(request,'myapp/counseling_record.html')
+
+def counseling_record(request):
+
+    reg_no = request.POST.get('stu_reg')
+    stu_name = request.POST.get('stu_name')
+    mentor_name = request.POST.get('stu_mentor')
+
+    s1_r1 = request.POST.get('s1_r1')
+    s1_m1 = request.POST.get('s1_m1')
+    s1_r2 = request.POST.get('s1_r2')
+    s1_m2 = request.POST.get('s1_m2')
+
+    s2_r1 = request.POST.get('s2_r1')
+    s2_m1 = request.POST.get('s2_m1')
+    s2_r2 = request.POST.get('s2_r2')
+    s2_m2 = request.POST.get('s2_m2')
+
+    s3_r1 = request.POST.get('s3_r1')
+    s3_m1 = request.POST.get('s3_m1')
+    s3_r2 = request.POST.get('s3_r2')
+    s3_m2 = request.POST.get('s3_m2')
+
+    s4_r1 = request.POST.get('s4_r1')
+    s4_m1 = request.POST.get('s4_m1')
+    s4_r2 = request.POST.get('s4_r2')
+    s4_m2 = request.POST.get('s4_m2')
+
+    s5_r1 = request.POST.get('s5_r1')
+    s5_m1 = request.POST.get('s5_m1')
+    s5_r2 = request.POST.get('s5_r2')
+    s5_m2 = request.POST.get('s5_m2')
+
+    s6_r1 = request.POST.get('s6_r1')
+    s6_m1 = request.POST.get('s6_m1')
+    s6_r2 = request.POST.get('s6_r2')
+    s6_m2 = request.POST.get('s6_m2')
+
+    record = Counselor_Record(reg_no=reg_no,stu_name=stu_name,mentor_name=mentor_name,s1_r1=s1_r1,
+                              s1_m1=s1_m1,s1_r2=s1_r2,s1_m2=s1_m2,s2_r1=s2_r1,s2_m1=s2_m1,s2_r2=s2_r2,
+                              s2_m2=s2_m2,s3_r1=s3_r1,s3_m1=s3_m1,s3_r2=s3_r2,s3_m2=s3_m2,s4_r1=s4_r1,
+                              s4_m1=s4_m1,s4_r2=s4_r2,s4_m2=s4_m2,s5_r1=s5_r1,s5_m1=s5_m1,s5_r2=s5_r2,
+                              s5_m2=s5_m2,s6_r1=s6_r1,s6_m1=s6_m1,s6_r2=s6_r2,s6_m2=s6_m2)
+    record.save()
+    return show_counseling_record(request)
+
+def show_fetch_counselor_record(request):
+    return render(request,'myapp/show_counselor_record.html')
+
+def fetch_counselor_record(request):
+    student_id = request.POST.get('stu_id')
+    my_record = Counselor_Record.objects.filter(reg_no=student_id)
+    if len(my_record) == 0:
+        return render(request,'myapp/show_counselor_record.html',{'msg':"Record Not found for Searched Registered Id "})
+    else:
+        my_record = list(my_record)[0]
+        return render(request, 'myapp/show_counselor_record.html',{'my_record':my_record})
+
+def show_discipline(required):
+    return render(required,'myapp/Discipline.html')
+
+def get_discipline(request):
+    stu_id = request.POST.get('stu_id')
+    cou_id = request.session.get('cou_id')
+
+    gd1 = request.POST.get('gd1')
+    gd2 = request.POST.get('gd2')
+    gd3 = request.POST.get('gd3')
+    gd4 = request.POST.get('gd4')
+    gd5 = request.POST.get('gd5')
+    gd6 = request.POST.get('gd6')
+
+    cs1 = request.POST.get('cs1')
+    cs2 = request.POST.get('cs2')
+    cs3 = request.POST.get('cs3')
+    cs4 = request.POST.get('cs4')
+    cs5 = request.POST.get('cs5')
+    cs6 = request.POST.get('cs6')
+
+    gg1 = request.POST.get('gg1')
+    gg2 = request.POST.get('gg2')
+    gg3 = request.POST.get('gg3')
+    gg4 = request.POST.get('gg4')
+    gg5 = request.POST.get('gg5')
+    gg6 = request.POST.get('gg6')
+
+    bwp1 = request.POST.get('bwp1')
+    bwp2 = request.POST.get('bwp2')
+    bwp3 = request.POST.get('bwp3')
+    bwp4 = request.POST.get('bwp4')
+    bwp5 = request.POST.get('bwp5')
+    bwp6 = request.POST.get('bwp6')
+
+    bwf1 = request.POST.get('bwf1')
+    bwf2 = request.POST.get('bwf2')
+    bwf3 = request.POST.get('bwf3')
+    bwf4 = request.POST.get('bwf4')
+    bwf5 = request.POST.get('bwf5')
+    bwf6 = request.POST.get('bwf6')
+
+    cca1 = request.POST.get('cca1')
+    cca2 = request.POST.get('cca2')
+    cca3 = request.POST.get('cca3')
+    cca4 = request.POST.get('cca4')
+    cca5 = request.POST.get('cca5')
+    cca6 = request.POST.get('cca6')
+
+    ea1 = request.POST.get('ea1')
+    ea2 = request.POST.get('ea2')
+    ea3 = request.POST.get('ea3')
+    ea4 = request.POST.get('ea4')
+    ea5 = request.POST.get('ea5')
+    ea6 = request.POST.get('ea6')
+
+    bh1 = request.POST.get('bh1')
+    bh2 = request.POST.get('bh2')
+    bh3 = request.POST.get('bh3')
+    bh4 = request.POST.get('bh4')
+    bh5 = request.POST.get('bh5')
+    bh6 = request.POST.get('bh6')
+
+    og1 = request.POST.get('og1')
+    og2 = request.POST.get('og2')
+    og3 = request.POST.get('og3')
+    og4 = request.POST.get('og4')
+    og5 = request.POST.get('og5')
+    og6 = request.POST.get('og6')
+
+    da1 = request.POST.get('da1')
+    da2 = request.POST.get('da2')
+    da3 = request.POST.get('da3')
+    da4 = request.POST.get('da4')
+    da5 = request.POST.get('da5')
+    da6 = request.POST.get('da6')
+
+    is1 = request.POST.get('is1')
+    is2 = request.POST.get('is2')
+    is3 = request.POST.get('is3')
+    is4 = request.POST.get('is4')
+    is5 = request.POST.get('is5')
+    is6 = request.POST.get('is6')
+
+    im1 = request.POST.get('im1')
+    im2 = request.POST.get('im2')
+    im3 = request.POST.get('im3')
+    im4 = request.POST.get('im4')
+    im5 = request.POST.get('im5')
+    im6 = request.POST.get('im6')
+
+    rm1 = request.POST.get('rm1')
+    rm2 = request.POST.get('rm2')
+    rm3 = request.POST.get('rm3')
+    rm4 = request.POST.get('rm4')
+    rm5 = request.POST.get('rm5')
+    rm6 = request.POST.get('rm6')
+
+    empty1 = request.POST.get('empty1')
+    empty2 = request.POST.get('empty2')
+    empty3 = request.POST.get('empty3')
+    empty4 = request.POST.get('empty4')
+    empty5 = request.POST.get('empty5')
+    empty6 = request.POST.get('empty6')
+
+    place1 = request.POST.get('place1')
+    gate1 = request.POST.get('gate1')
+    other1 = request.POST.get('other1')
+
+    disp = Discipline(stu_id=stu_id,cou_id=cou_id,gd1=gd1,gd2=gd2,gd3=gd3,gd4=gd4,gd5=gd5,gd6=gd6,
+                      cs1=cs1,cs2=cs2,cs3=cs3,cs4=cs4,cs5=cs5,cs6=cs6,
+                      gg1=gg1,gg2=gg2,gg3=gg3,gg4=gg4,gg5=gg5,gg6=gg6,
+                      bwp1=bwp1,bwp2=bwp2,bwp3=bwp3,bwp4=bwp4,bwp5=bwp5,bwp6=bwp6,
+                      bwf1=bwf1,bwf2=bwf2,bwf3=bwf3,bwf4=bwf4,bwf5=bwf5,bwf6=bwf6,
+                      cca1=cca1,cca2=cca2,cca3=cca3,cca4=cca4,cca5=cca5,cca6=cca6,
+                      ea1=ea1,ea2=ea2,ea3=ea3,ea4=ea4,ea5=ea5,ea6=ea6,
+                      bh1=bh1,bh2=bh2,bh3=bh3,bh4=bh4,bh5=bh5,bh6=bh6,
+                      og1=og1,og2=og2,og3=og3,og4=og4,og5=og5,og6=og6,
+                      da1=da1,da2=da2,da3=da3,da4=da4,da5=da5,da6=da6,
+                      is1=is1,is2=is2,is3=is3,is4=is4,is5=is5,is6=is6,
+                      im1=im1,im2=im2,im3=im3,im4=im4,im5=im5,im6=im6,
+                      rm1=rm1,rm2=rm2,rm3=rm3,rm4=rm4,rm5=rm5,rm6=rm6,
+                      empty1=empty1,empty2=empty2,empty3=empty3,empty4=empty4,empty5=empty5,empty6=empty6,
+                      place1=place1, gate1=gate1, other1=other1)
+    disp.save()
+    return show_discipline(request)
+
+
+def view_discipline(request):
+    return render(request,'myapp/view_discipline.html')
+
+def fetch_discipline(request):
+    stu_id = request.POST.get('stu_id')
+    my_res = Discipline.objects.filter(stu_id=stu_id)
+    if len(my_res) == 0:
+        return view_discipline(request)
+    else:
+        my_res = list(my_res)[0]
+        return render(request,'myapp/view_discipline.html',{'my_res':my_res})
+
+    return None

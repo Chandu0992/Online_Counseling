@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Counseling</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body background="{% static 'images/bg.jpg' %}">
+<div align="center">
+    <img src="{% static 'images/gvp-logo.png' %}" alt="Oops Image not found...">
+</div>
+<div>
+    <form action="{% url 'fetch_discipline' %}" method="post">
+        {% csrf_token %}
+        <table align="center">
+        <tr>
+            <td>Student Reg Id :</td>
+            <td><input type="text" name="stu_id" placeholder="Student Reg Id" required></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <input type="submit" value="Get Data" class="btn btn-success btn-block btn-lg"></td>
+        </tr>
+        </table>
+    </form>
+
+    <table border="1" align="center">
+        <tr>
+            <td></td>
+            <td>I</td>
+            <td>II</td>
+            <td>III</td>
+            <td>IV</td>
+            <td>V</td>
+            <td>VI</td>
+        </tr>
+
+        <tr>
+            <td>General Discipline</td>
+            <td>{{ my_res.gd1 }}</td>
+            <td>{{ my_res.gd2 }}</td>
+            <td>{{ my_res.gd3 }}</td>
+            <td>{{ my_res.gd4 }}</td>
+            <td>{{ my_res.gd5 }}</td>
+            <td>{{ my_res.gd6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Communication Skills</td>
+            <td>{{ my_res.cs1 }}</td>
+            <td>{{ my_res.cs2 }}</td>
+            <td>{{ my_res.cs3 }}</td>
+            <td>{{ my_res.cs4 }}</td>
+            <td>{{ my_res.cs5 }}</td>
+            <td>{{ my_res.cs6 }}</td>
+        </tr>
+
+        <tr>
+            <td>General Grooming</td>
+            <td>{{ my_res.gg1 }}</td>
+            <td>{{ my_res.gg2 }}</td>
+            <td>{{ my_res.gg3 }}</td>
+            <td>{{ my_res.gg4 }}</td>
+            <td>{{ my_res.gg5 }}</td>
+            <td>{{ my_res.gg6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Behavior with peers</td>
+            <td>{{ my_res.bwp1 }}</td>
+            <td>{{ my_res.bwp2 }}</td>
+            <td>{{ my_res.bwp3 }}</td>
+            <td>{{ my_res.bwp4 }}</td>
+            <td>{{ my_res.bwp5 }}</td>
+            <td>{{ my_res.bwp6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Behavior with faculty</td>
+            <td>{{ my_res.bwf1 }}</td>
+            <td>{{ my_res.bwf2 }}</td>
+            <td>{{ my_res.bwf3 }}</td>
+            <td>{{ my_res.bwf4 }}</td>
+            <td>{{ my_res.bwf5 }}</td>
+            <td>{{ my_res.bwf6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Co-Curricular activities</td>
+            <td>{{ my_res.cca1 }}</td>
+            <td>{{ my_res.cca2 }}</td>
+            <td>{{ my_res.cca3}}</td>
+            <td>{{ my_res.cca4 }}</td>
+            <td>{{ my_res.cca5 }}</td>
+            <td>{{ my_res.cca6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Extracurricular activities</td>
+            <td>{{ my_res.ea1 }}</td>
+            <td>{{ my_res.ea2 }}</td>
+            <td>{{ my_res.ea3 }}</td>
+            <td>{{ my_res.ea4 }}</td>
+            <td>{{ my_res.ea5 }}</td>
+            <td>{{ my_res.ea6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Behavior in the hostel</td>
+            <td>{{ my_res.bh1 }}</td>
+            <td>{{ my_res.bh2 }}</td>
+            <td>{{ my_res.bh3 }}</td>
+            <td>{{ my_res.bh4 }}</td>
+            <td>{{ my_res.bh5 }}</td>
+            <td>{{ my_res.bh6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Over all grading</td>
+            <td>{{ my_res.og1 }}</td>
+            <td>{{ my_res.og2 }}</td>
+            <td>{{ my_res.og3 }}</td>
+            <td>{{ my_res.og4 }}</td>
+            <td>{{ my_res.og5 }}</td>
+            <td>{{ my_res.og6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Disciplinary actions</td>
+            <td>{{ my_res.da1 }}</td>
+            <td>{{ my_res.da2 }}</td>
+            <td>{{ my_res.da3 }}</td>
+            <td>{{ my_res.da4 }}</td>
+            <td>{{ my_res.da5 }}</td>
+            <td>{{ my_res.da6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Initial of student</td>
+            <td>{{ my_res.is1 }}</td>
+            <td>{{ my_res.is2 }}</td>
+            <td>{{ my_res.is3 }}</td>
+            <td>{{ my_res.is4 }}</td>
+            <td>{{ my_res.is5 }}</td>
+            <td>{{ my_res.is6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Initial of Mentor</td>
+            <td>{{ my_res.im1 }}</td>
+            <td>{{ my_res.im2 }}</td>
+            <td>{{ my_res.im3 }}</td>
+            <td>{{ my_res.im4 }}</td>
+            <td>{{ my_res.im5 }}</td>
+            <td>{{ my_res.im6 }}</td>
+        </tr>
+
+        <tr>
+            <td>Remarks</td>
+            <td>{{ my_res.rm1 }}</td>
+            <td>{{ my_res.rm2 }}</td>
+            <td>{{ my_res.rm3 }}</td>
+            <td>{{ my_res.rm4 }}</td>
+            <td>{{ my_res.rm5 }}</td>
+            <td>{{ my_res.rm6 }}</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>{{ my_res.empty1 }}</td>
+            <td>{{ my_res.empty2 }}</td>
+            <td>{{ my_res.empty3 }}</td>
+            <td>{{ my_res.empty4 }}</td>
+            <td>{{ my_res.empty5 }}</td>
+            <td>{{ my_res.empty6 }}</td>
+        </tr>
+    </table>
+    <div align="center">
+        <h3>Higher Education/Placement</h3>
+    <table border="1">
+        <tr>
+            <td>Placement Details</td>
+            <td>Gate</td>
+            <td>CAT/MAT/GMAT/GRE/TOEFEl/IELTS</td>
+        </tr>
+        <tr>
+            <td>{{ my_res.place1 }}</td>
+            <td>{{ my_res.gate1 }}</td>
+            <td>{{ my_res.other1 }}</td>
+        </tr>
+
+    </table>
+</div>
+    </form>
+</div>
+</body>
+</html>
