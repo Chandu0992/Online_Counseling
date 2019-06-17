@@ -34,7 +34,7 @@ class Student_Registration(models.Model):
         return self.registration_number
 
 class Counselor(models.Model):
-    counselor_id = models.CharField(max_length=11)
+    counselor_id = models.CharField(max_length=11,primary_key=True)
     counselor_name = models.CharField(max_length=50)
     counselor_designation = models.CharField(max_length=50)
     counselor_pwd = models.CharField(max_length=250)
@@ -92,7 +92,7 @@ class Student_Question(models.Model):
         return self.counselor_id+' '+self.stu_Question
 
 class HOD(models.Model):
-    hod_id = models.CharField(max_length=11)
+    hod_id = models.CharField(max_length=11,primary_key=True)
     hod_name = models.CharField(max_length=50)
     hod_designation = models.CharField(max_length=50)
     hod_pwd = models.CharField(max_length=250)

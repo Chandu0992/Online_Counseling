@@ -84,16 +84,16 @@ def login_counselor(request):
     cou_id = request.POST.get('counselor_id')
     cou_pwd = request.POST.get('counselor_pwd')
     res = Counselor.objects.filter(counselor_id=cou_id)
+    print(res)
     if len(res) == 0:
         return show_counselor(request)
     else:
         res1 = list(res)[0]
-        if len(res) == 0:
-            return show_counselor(request)
+        if check_password(cou_pwd,res1.counselor_pwd):
+            request.session['cou_id'] = cou_id
+            return fetch_counselor(request)
         else:
-            if check_password(cou_pwd,res1.counselor_pwd):
-                request.session['cou_id'] = cou_id
-                return fetch_counselor(request)
+            return show_counselor(request)
 
 def addStudent(request):
     cou_id = request.session.get('cou_id')
@@ -459,13 +459,11 @@ def login_hod(request):
         return show_hod(request)
     else:
         res1 = list(res)[0]
-        if len(res) == 0:
-            return show_hod(request)
+        if check_password(hod_pwd, res1.hod_pwd):
+            request.session['hod_id'] = hod_id
+            return fetch_hod(request)
         else:
-            if check_password(hod_pwd, res1.hod_pwd):
-                request.session['hod_id'] = hod_id
-                return fetch_hod(request)
-
+            return show_hod(request)
 
 def show_feedback_all_students(request):
     #hod_id = request.session.get('hod_id')
