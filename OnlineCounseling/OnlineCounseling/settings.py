@@ -147,5 +147,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media/images')
 
 
 #Email Credentials
-EMAIL_HOST_USER = 'acrazyboy25@gmail.com'
-EMAIL_HOST_PASSWORD = 'Vaishu@1210'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
